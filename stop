@@ -1,0 +1,13 @@
+#!/bin/sh
+current_time=$(date +"%Y-%m-%d %H:%M:%S")
+
+docker=$(docker ps) 
+if [[ $docker != *"telegbot/tgmsg"* ]]; then  
+    echo -e "$current_time | \033[1;31m项目未启动,无需使用启动命令 \033[0m "
+    exit
+else 
+    docker-compose stop
+    echo -e "$current_time | \033[1;31m项目已停止... \033[0m"  
+fi 
+
+ 
